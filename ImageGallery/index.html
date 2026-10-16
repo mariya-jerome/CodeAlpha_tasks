@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Interactive Image Gallery</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>Moments in Focus</h1>
+        <p>Explore beautiful moments around the world</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <h2>Our Photo Gallery</h2>
+        <p class="description">
+            Select a category to explore the photographs.
+        </p>
+
+        <!-- Category Buttons -->
+        <nav class="filters" aria-label="Photo categories">
+            <button class="filter-btn active" data-filter="all" aria-pressed="true">
+                All Photos
+            </button>
+
+            <button class="filter-btn" data-filter="nature" aria-pressed="false">
+                Nature
+            </button>
+
+            <button class="filter-btn" data-filter="city" aria-pressed="false">
+                City
+            </button>
+
+            <button class="filter-btn" data-filter="animals" aria-pressed="false">
+                Animals
+            </button>
+        </nav>
+
+        <!-- Image Gallery -->
+        <section class="gallery" id="gallery">
+
+            <!-- Nature Images -->
+            <article class="gallery-item" data-category="nature" tabindex="0" role="button">
+                <img
+                    src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80"
+                    alt="Beautiful mountain lake"
+                    loading="lazy"
+                >
+                <div class="image-overlay">
+                    <h3>Mountain Lake</h3>
+                    <p>Nature</p>
+                </div>
+            </article>
+
+            <article class="gallery-item" data-category="nature" tabindex="0" role="button">
+                <img
+                    src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=80"
+                    alt="Green forest"
+                    loading="lazy"
+                >
+                <div class="image-overlay">
+                    <h3>Green Forest</h3>
+                    <p>Nature</p>
+                </div>
+            </article>
+
+            <article class="gallery-item" data-category="nature" tabindex="0" role="button">
+                <img
+                    src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
+                    alt="Scenic natural landscape"
+                    loading="lazy"
+                >
+                <div class="image-overlay">
+                    <h3>Scenic Landscape</h3>
+                    <p>Nature</p>
+                </div>
+            </article>
+
+            <!-- City Images -->
+            <article class="gallery-item" data-category="city" tabindex="0" role="button">
+                <img
+                    src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=900&q=80"
+                    alt="City skyline"
+                    loading="lazy"
+                >
+                <div class="image-overlay">
+                    <h3>City Skyline</h3>
+                    <p>City</p>
+                </div>
+            </article>
+
+            <article class="gallery-item" data-category="city" tabindex="0" role="button">
+                <img
+                    src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=80"
+                    alt="Modern architecture"
+                    loading="lazy"
+                >
+                <div class="image-overlay">
+                    <h3>Modern Architecture</h3>
+                    <p>City</p>
+                </div>
+            </article>
+
+            <article class="gallery-item" data-category="city" tabindex="0" role="button">
+                <img
+                    src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=900&q=80"
+                    alt="Buildings in a city"
+                    loading="lazy"
+                >
+                <div class="image-overlay">
+                    <h3>Urban Life</h3>
+                    <p>City</p>
+                </div>
+            </article>
+
+            <!-- Animal Images -->
+            <article class="gallery-item" data-category="animals" tabindex="0" role="button">
+                <img
+                    src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=900&q=80"
+                    alt="Cute dog"
+                    loading="lazy"
+                >
+                <div class="image-overlay">
+                    <h3>Friendly Dog</h3>
+                    <p>Animals</p>
+                </div>
+            </article>
+
+            <article class="gallery-item" data-category="animals" tabindex="0" role="button">
+                <img
+                    src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=900&q=80"
+                    alt="Cat looking at the camera"
+                    loading="lazy"
+                >
+                <div class="image-overlay">
+                    <h3>Curious Cat</h3>
+                    <p>Animals</p>
+                </div>
+            </article>
+
+            <article class="gallery-item" data-category="animals" tabindex="0" role="button">
+                <img
+                    src="https://images.unsplash.com/photo-1552728089-57bdde30beb3?auto=format&fit=crop&w=900&q=80"
+                    alt="Colorful bird"
+                    loading="lazy"
+                >
+                <div class="image-overlay">
+                    <h3>Colorful Bird</h3>
+                    <p>Animals</p>
+                </div>
+            </article>
+
+        </section>
+
+    </main>
+
+    <!-- Lightbox -->
+    <div
+        class="lightbox"
+        id="lightbox"
+        aria-hidden="true"
+        aria-modal="true"
+        role="dialog"
+        aria-labelledby="lightboxTitle"
+    >
+
+        <button
+            class="close-btn"
+            id="closeBtn"
+            aria-label="Close image viewer"
+        >&times;</button>
+
+        <button
+            class="nav-btn prev-btn"
+            id="prevBtn"
+            aria-label="Previous image"
+        >&#10094;</button>
+
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightboxImage">
+
+            <div class="lightbox-info">
+                <h3 id="lightboxTitle"></h3>
+                <p id="imageCounter"></p>
+            </div>
+        </div>
+
+        <button
+            class="nav-btn next-btn"
+            id="nextBtn"
+            aria-label="Next image"
+        >&#10095;</button>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Moments in Focus | Image Gallery</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#10100f" />
+    <meta
+      name="description"
+      content="A little space to slow down and listen."
+    />
+    <title>Stillwave — Music Player</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="player-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Stillwave home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M3 14.5c2.2 0 2.2-5 4.5-5s2.3 9 4.5 9 2.3-13 4.5-13 2.3 9 4.5 9" />
+            </svg>
+          </span>
+          stillwave
+        </a>
+        <div class="listening-note">
+          <span class="status-dot"></span>
+          YOUR QUIET CORNER
+        </div>
+        <button class="icon-button header-menu" type="button" aria-label="More options">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <circle cx="5" cy="12" r="1.5" />
+            <circle cx="12" cy="12" r="1.5" />
+            <circle cx="19" cy="12" r="1.5" />
+          </svg>
+        </button>
+      </header>
+
+      <section class="content-grid" aria-label="Music player">
+        <section class="now-playing" aria-label="Now playing">
+          <div class="section-heading">
+            <span class="eyebrow">NOW PLAYING</span>
+            <span class="live-indicator"><span></span> LIVE SESSION</span>
+          </div>
+
+          <div class="album-art art-one" id="album-art" aria-label="Album artwork">
+            <div class="art-grain"></div>
+            <div class="art-sun"></div>
+            <div class="art-horizon"></div>
+            <div class="art-mountains"></div>
+            <div class="art-copy">
+              <span class="art-kicker">STILLWAVE SESSIONS · 01</span>
+              <span class="art-title" id="art-title">Golden<br />Hour</span>
+              <span class="art-subtitle" id="art-subtitle">A softer kind of loud</span>
+            </div>
+            <span class="art-index">SIDE A<br /><span>01 — 08</span></span>
+            <span class="art-orbit" aria-hidden="true"></span>
+          </div>
+
+          <div class="track-heading">
+            <div class="track-copy">
+              <h1 id="track-title">Golden Hour</h1>
+              <p id="track-artist">The Paper Kites <span>·</span> Woodland</p>
+            </div>
+            <button
+              class="icon-button favorite-button"
+              id="favorite-button"
+              type="button"
+              aria-label="Add Golden Hour to favorites"
+              aria-pressed="false"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.8 8.8c0 4.5-8.8 10-8.8 10S3.2 13.3 3.2 8.8A4.3 4.3 0 0 1 12 6.7a4.3 4.3 0 0 1 8.8 2.1Z" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="timeline">
+            <label class="sr-only" for="progress">Track progress</label>
+            <input
+              id="progress"
+              class="range-input progress-input"
+              type="range"
+              min="0"
+              max="100"
+              value="0"
+              step="0.1"
+              aria-label="Track progress"
+            />
+            <div class="time-row">
+              <span id="current-time">0:00</span>
+              <span id="duration">0:00</span>
+            </div>
+          </div>
+
+          <div class="controls">
+            <button
+              class="icon-button shuffle-button"
+              id="shuffle-button"
+              type="button"
+              aria-label="Shuffle playlist"
+              aria-pressed="false"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M16 3h5v5M4 20 21 3M21 16v5h-5M14 14l7 7M4 4l5 5" />
+              </svg>
+            </button>
+            <button class="icon-button skip-button" id="previous-button" type="button" aria-label="Previous track">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 5v14M19 6 8 12l11 6V6Z" />
+              </svg>
+            </button>
+            <button class="play-button" id="play-button" type="button" aria-label="Play">
+              <svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m9 5 11 7-11 7V5Z" />
+              </svg>
+              <svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8 5h3v14H8zM15 5h3v14h-3z" />
+              </svg>
+            </button>
+            <button class="icon-button skip-button" id="next-button" type="button" aria-label="Next track">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18 5v14M5 6l11 6-11 6V6Z" />
+              </svg>
+            </button>
+            <button
+              class="icon-button repeat-button"
+              id="repeat-button"
+              type="button"
+              aria-label="Repeat off"
+              aria-pressed="false"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m17 2 4 4-4 4M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4M21 13v2a3 3 0 0 1-3 3H3" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="player-footer">
+            <div class="volume-control">
+              <button class="icon-button volume-button" id="mute-button" type="button" aria-label="Mute">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M11 5 6 9H3v6h3l5 4V5ZM15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" />
+                </svg>
+              </button>
+              <label class="sr-only" for="volume">Volume</label>
+              <input
+                id="volume"
+                class="range-input volume-input"
+                type="range"
+                min="0"
+                max="1"
+                value="0.72"
+                step="0.01"
+                aria-label="Volume"
+              />
+            </div>
+            <button
+              class="autoplay-toggle"
+              id="autoplay-button"
+              type="button"
+              aria-pressed="true"
+            >
+              <span class="autoplay-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="m4 5 16 14M20 5 4 19M13 4h7v7M11 20H4v-7" />
+                </svg>
+              </span>
+              AUTOPLAY <span class="toggle-track"><span></span></span>
+            </button>
+          </div>
+          <p class="player-message" id="player-message" role="status" aria-live="polite"></p>
+        </section>
+
+        <aside class="playlist-panel" aria-label="Playlist">
+          <div class="playlist-header">
+            <div>
+              <span class="eyebrow">UP NEXT</span>
+              <h2>Slow mornings</h2>
+            </div>
+            <div class="playlist-actions">
+              <span class="track-count" id="track-count">08 TRACKS</span>
+              <button class="add-tracks-button" id="add-tracks-button" type="button">
+                <span aria-hidden="true">+</span> ADD TRACKS
+              </button>
+              <input
+                class="sr-only"
+                id="audio-file-input"
+                type="file"
+                accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg,.flac,.opus"
+                multiple
+                aria-label="Choose audio files to add to the playlist"
+              />
+            </div>
+          </div>
+          <p class="playlist-description">Add songs from your device to make this playlist yours.</p>
+          <div class="playlist-list" id="playlist-list" role="list"></div>
+          <div class="playlist-bottom">
+            <div class="playlist-note-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm12-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+              </svg>
+            </div>
+            <div><strong>A softer kind of loud</strong><span>CURATED FOR YOUR MOMENT</span></div>
+            <svg class="bottom-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+          </div>
+        </aside>
+      </section>
+
+      <footer class="page-footer">
+        <span>TAKE YOUR TIME.</span>
+        <span>MADE FOR THE MOMENTS BETWEEN <i>✳</i></span>
+      </footer>
+      <audio id="audio" preload="metadata"></audio>
+    </main>
+  </body>
+</html>
